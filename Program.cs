@@ -1,5 +1,7 @@
 using UsersSystem.Data;
 using Microsoft.EntityFrameworkCore;
+using UsersSystem.Interfaces;
+using UsersSystem.Services.Users;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +11,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddScoped<IUser, UserService>();
 
 // Carrega o .env
 DotNetEnv.Env.Load();
