@@ -36,5 +36,20 @@ namespace UsersSystem.Controllers
             var user = await _user.UpdateUser(id, userObject);
             return Ok(user);
         }
+
+        [HttpPost("login")]
+        public async Task<ActionResult<ResponseModel<UserController>>> Login(UserDTO userDto)
+        {
+            var login = await _user.Login(userDto);
+            return Ok(login);
+        }
+
+        [HttpDelete("delete")]
+        public async Task<ActionResult<ResponseModel<UserController>>> Delete(int id)
+        {
+            var delete = await _user.DeleteUser(id);
+            return Ok(delete);
+        }
+
     }
 }
